@@ -5,57 +5,43 @@ import br.com.alura.minhasmusicas.modelos.Podcast;
 
 public class Main {
     public static void main(String[] args) {
-        // Sistema de Músicas
-        /* Praticando conceitos de OO, como:
-        *   - encapsulamento
-        *   - herança
-        *   - polimorfismo
-        *   - abstração
-        * */
-
-        //-----------------------------------------------------------------
-
-        // Criando uma música e atribuindo valores
         Musica minhaMusica = new Musica();
         minhaMusica.setTitulo("Clocks");
         minhaMusica.setArtista("Cold Play");
-        minhaMusica.setAlbum("Album Aleatório");
-        minhaMusica.setGenero("Pop Hits");
 
-        // Somando o número total de reproduções da música
-        for (int i = 0; i < 100; i++) {
-            minhaMusica.reproduzir(); // 100 reproduções
+        for (int i = 0; i < 1000; i++) {
+            minhaMusica.reproduzir();
         }
-
-        // Somando o número total de curtidas da música
         for (int i = 0; i < 50; i++) {
-            minhaMusica.curte(); // 50 curtidas
+            minhaMusica.curte();
         }
 
-        //----------------------------------------------------------------
-
-        //Criando um podcast e atribuindo valores
         Podcast meuPodcast = new Podcast();
         meuPodcast.setTitulo("Carreiras na Área de TI em 2025");
         meuPodcast.setHost("Paulo Silveira");
-        meuPodcast.setDescricao("Podcast incrível, que irá abordar sobre o mercado de trabalho na Área de TI em 2025");
 
-        // Somando o total de reproduções do podcast
-        for (int i = 0; i <= 50; i++){
-            meuPodcast.reproduzir(); // 50 reproduções
+        for (int i = 0; i < 5000; i++) {
+            meuPodcast.reproduzir();
+        }
+        for (int i = 0; i < 1000; i++) {
+            meuPodcast.curte();
         }
 
-        // Somando o total de curtidas do podcast
-        for (int i = 0; i <= 100; i++){
-            meuPodcast.curte(); // 100 curtidas
-        }
+        System.out.println("Total de reproduções de " + minhaMusica.getTitulo() + ": " + minhaMusica.getTotalReproducoes());
+        System.out.println("Total de curtidas de " + minhaMusica.getTitulo() + ": " + minhaMusica.getTotalCurtidas());
+        System.out.println("Classificação de " + minhaMusica.getTitulo() + ": " + minhaMusica.getClassificacao() + " estrelas");
 
-        //---------------------------------------------------------------
+        System.out.println("\nTotal de reproduções de " + meuPodcast.getTitulo() + ": " + meuPodcast.getTotalReproducoes());
+        System.out.println("Total de curtidas de " + meuPodcast.getTitulo() + ": " + meuPodcast.getTotalCurtidas());
+        System.out.println("Classificação de " + meuPodcast.getTitulo() + ": " + meuPodcast.getClassificacao() + " estrelas");
 
-        // Testando método 'incui'
         MinhasPreferidas minhasPreferidas = new MinhasPreferidas();
-        minhasPreferidas.inclui(meuPodcast);
         minhasPreferidas.inclui(minhaMusica);
+        minhasPreferidas.inclui(meuPodcast);
 
+        System.out.println("\n--- Minhas Músicas e Podcasts Favoritos ---");
+        minhasPreferidas.getAudiosFavoritos().forEach(audio ->
+                System.out.println(audio.getTitulo() + " - Classificação: " + audio.getClassificacao() + " estrelas")
+        );
     }
 }

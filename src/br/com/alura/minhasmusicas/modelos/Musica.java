@@ -29,13 +29,17 @@ public class Musica extends Audio{
         this.artista = artista;
     }
 
+    private static final int CLASSIFICACAO_MAXIMA = 10;
+    private static final int CLASSIFICACAO_MINIMA = 7;
+    private static final int REPRODUCOES_PARA_CLASSIFICACAO_MAXIMA = 200;
+
     // Lógica de classificação de músicas
     @Override
     public int getClassificacao() {
-        if (this.getTotalReproducoes() > 200){
-            return 10;
+        if (this.getTotalReproducoes() > REPRODUCOES_PARA_CLASSIFICACAO_MAXIMA){
+            return CLASSIFICACAO_MAXIMA;
         } else{
-            return 7;
+            return CLASSIFICACAO_MINIMA;
         }
     }
 

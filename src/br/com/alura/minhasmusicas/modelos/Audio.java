@@ -1,10 +1,9 @@
 package br.com.alura.minhasmusicas.modelos;
 
-public class Audio {
+public abstract class Audio {
     private String titulo;
     private int totalReproducoes;
     private int totalCurtidas;
-    private int classificacao;
 
     public void curte(){
         this.totalCurtidas++;
@@ -32,7 +31,5 @@ public class Audio {
         return totalCurtidas;
     }
 
-    public int getClassificacao() {
-        return classificacao;
-    }
+    public abstract int getClassificacao();
 }
