@@ -20,13 +20,17 @@ public class Podcast extends Audio {
         this.descricao = descricao;
     }
 
+    private static final int CLASSIFICACAO_MAXIMA = 10;
+    private static final int CLASSIFICACAO_MINIMA = 8;
+    private static final int CURTIDAS_PARA_CLASSIFICACAO_MAXIMA = 500;
+
     // Lógica de classificação de podcasts
     @Override
     public int getClassificacao(){
-        if (this.getTotalCurtidas() > 500){
-            return 10;
+        if (this.getTotalCurtidas() > CURTIDAS_PARA_CLASSIFICACAO_MAXIMA){
+            return CLASSIFICACAO_MAXIMA;
         } else{
-            return 8;
+            return CLASSIFICACAO_MINIMA;
         }
     }
 
